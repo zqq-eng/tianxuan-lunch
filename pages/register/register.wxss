@@ -1,0 +1,16 @@
+.container {
+  padding: 60rpx 40rpx;
+}
+.title {
+  font-size: 32rpx;
+  font-weight: 600;
+  margin-bottom: 32rpx;
+  color: #333333;
+}
+.input {
+  background: #f9f9f9;
+  border-radius: 999px;
+  padding: 20rpx 32rpx;
+  margin-bottom: 24rpx;
+  font-size: 28rpx;
+}

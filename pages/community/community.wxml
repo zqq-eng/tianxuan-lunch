@@ -1,0 +1,26 @@
+<view class="container">
+  <view class="card">
+    <view class="title">发布一条今日吃饭记录</view>
+    <textarea class="textarea" placeholder="例如：中午黄焖鸡+烤地瓜，吃得很满足但也比较健康~"
+              value="{{content}}" bindinput="onContentInput" />
+    <button class="button-primary" bindtap="onPost">发布</button>
+    <view class="tip">
+      当前为本地模式：只有本机能看到这些记录，适合自己记饮食。
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="title">我的饮食记录</view>
+    <block wx:for="{{posts}}" wx:key="id">
+      <view class="post">
+        <view class="post-header">
+          <text class="time">{{item.timeStr}}</text>
+        </view>
+        <text class="body">{{item.content}}</text>
+      </view>
+    </block>
+    <view wx:if="{{!posts.length}}" class="empty-tip">
+      还没有内容，先记录一下今天吃了什么吧~
+    </view>
+  </view>
+</view>

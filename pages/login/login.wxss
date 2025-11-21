@@ -1,0 +1,50 @@
+.container {
+  padding: 80rpx 40rpx;
+}
+.logo-area {
+  align-items: center;
+  text-align: center;
+  margin-bottom: 60rpx;
+}
+.logo-circle {
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 50%;
+  margin: 0 auto 20rpx;
+  background: radial-gradient(circle at 30% 30%, #fff7e6, #ff9a9e);
+  animation: float 4s ease-in-out infinite alternate;
+}
+.logo-text {
+  font-size: 48rpx;
+  font-weight: 600;
+  color: #ff6b6b;
+}
+.logo-sub {
+  margin-top: 8rpx;
+  font-size: 24rpx;
+  color: #999999;
+}
+.form-card {
+  margin-top: 20rpx;
+}
+.input {
+  background: #f9f9f9;
+  border-radius: 999px;
+  padding: 20rpx 32rpx;
+  margin-bottom: 24rpx;
+  font-size: 28rpx;
+}
+.link-row {
+  margin-top: 24rpx;
+  text-align: center;
+  font-size: 26rpx;
+  color: #666666;
+}
+.link {
+  color: #ff6b6b;
+  margin-left: 8rpx;
+}
+@keyframes float {
+  from { transform: translateY(0rpx); }
+  to   { transform: translateY(-20rpx); }
+}

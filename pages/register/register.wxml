@@ -1,0 +1,9 @@
+<view class="container">
+  <view class="card">
+    <view class="title">创建你的吃饭小号</view>
+    <input class="input" placeholder="用户名（方便记忆即可）" bindinput="onUsernameInput" />
+    <input class="input" placeholder="密码" password="true" bindinput="onPasswordInput" />
+    <input class="input" placeholder="确认密码" password="true" bindinput="onConfirmInput" />
+    <button class="button-primary" bindtap="onRegister">注册</button>
+  </view>
+</view>

@@ -1,0 +1,64 @@
+<view class="index-page">
+  <!-- 背景动态圆圈 -->
+  <view class="bg-circle bg1"></view>
+  <view class="bg-circle bg2"></view>
+  <view class="bg-circle bg3"></view>
+
+  <!-- 天气 / 建议卡片 -->
+  <view class="card weather-card">
+    <view class="weather-left">
+      <text class="weather-title">
+        {{ hasWeather ? (weather.city + ' · 当前天气') : '今日小建议' }}
+      </text>
+      <text class="weather-main">
+        {{ hasWeather ? (weather.text + ' · ' + weather.temp + '℃') : slogan }}
+      </text>
+      <text class="weather-suggestion">
+        {{ hasWeather ? sloganDetail : '授权定位后，我会结合当地天气给你推荐饮食思路。' }}
+      </text>
+    </view>
+  </view>
+
+  <!-- 主卡片：抽一抽 -->
+  <view class="card main-card">
+    <view class="hero-row">
+      <view class="hero-text">
+        <text class="hero-title">今天吃什么？</text>
+        <text class="hero-sub">交给天选之饭 · 少一点纠结</text>
+      </view>
+      <view class="hero-badge">
+        <text class="badge-text">{{currentCategoryLabel}}</text>
+      </view>
+    </view>
+
+    <!-- 分类切换 -->
+    <view class="category-row">
+      <view class="cat-chip {{currentCategory==='restaurant'?'active':''}}"
+            bindtap="onChangeCategory" data-type="restaurant">餐厅</view>
+      <view class="cat-chip {{currentCategory==='main'?'active':''}}"
+            bindtap="onChangeCategory" data-type="main">主食</view>
+      <view class="cat-chip {{currentCategory==='snack'?'active':''}}"
+            bindtap="onChangeCategory" data-type="snack">小吃</view>
+      <view class="cat-chip {{currentCategory==='drink'?'active':''}}"
+            bindtap="onChangeCategory" data-type="drink">饮料</view>
+    </view>
+
+    <!-- 抽取结果 -->
+    <view class="result-card" animation="{{animationData}}">
+      <text class="result-label">今日天选结果</text>
+      <text class="result-name">
+        {{resultItem.name || '轻点下方按钮，交给命运~'}}
+      </text>
+      <text class="result-tag" wx:if="{{resultItem.tag}}">{{resultItem.tag}}</text>
+    </view>
+
+    <!-- 抽一抽按钮 -->
+    <button class="primary-btn" bindtap="onRandom">抽 一 抽</button>
+
+    <!-- 底部操作按钮 -->
+    <view class="actions-row">
+      <button class="secondary-btn" bindtap="goPool">管理抽取池</button>
+      <button class="secondary-btn" bindtap="onLocate">附近找吃的</button>
+    </view>
+  </view>
+</view>

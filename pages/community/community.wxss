@@ -1,0 +1,48 @@
+.container {
+  padding: 30rpx 20rpx 60rpx;
+}
+.title {
+  font-size: 30rpx;
+  font-weight: 600;
+  margin-bottom: 24rpx;
+}
+.textarea {
+  width: 100%;
+  min-height: 180rpx;
+  padding: 20rpx 24rpx;
+  border-radius: 24rpx;
+  background: #f9f9f9;
+  font-size: 26rpx;
+  margin-bottom: 20rpx;
+}
+.tip {
+  margin-top: 12rpx;
+  font-size: 22rpx;
+  color: #aaaaaa;
+}
+.post {
+  padding: 16rpx 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+.post:last-child {
+  border-bottom-width: 0;
+}
+.post-header {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 6rpx;
+}
+.time {
+  font-size: 22rpx;
+  color: #999999;
+}
+.body {
+  font-size: 26rpx;
+  color: #444444;
+}
+.empty-tip {
+  font-size: 24rpx;
+  color: #aaaaaa;
+  text-align: center;
+  padding: 20rpx 0 0;
+}

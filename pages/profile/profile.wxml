@@ -1,0 +1,26 @@
+<view class="container">
+  <view class="card top-card">
+    <view class="user-row">
+      <view class="avatar">{{initial}}</view>
+      <view class="info">
+        <text class="name">{{username || '未登录'}}</text>
+        <text class="sub" wx:if="{{username}}">吃饭也是一种修行~</text>
+        <text class="sub" wx:if="{{!username}}">请先登录以使用完整功能</text>
+      </view>
+    </view>
+    <button wx:if="{{!username}}" class="button-primary" bindtap="goLogin">去登录/注册</button>
+    <button wx:if="{{username}}" class="button-primary" bindtap="onLogout">退出登录</button>
+  </view>
+
+  <view class="card">
+    <view class="title">身体与目标</view>
+    <picker mode="selector" range="{{goalOptions}}" bindchange="onGoalChange">
+      <view class="picker">当前目标：{{goalOptions[goalIndex]}}</view>
+    </picker>
+    <input class="input" placeholder="当前体重（kg）" value="{{weight}}" bindinput="onWeightInput" />
+    <view class="tag-row">
+      <view class="tag" wx:for="{{likeTags}}" wx:key="*this">{{item}}</view>
+    </view>
+    <button class="button-primary" bindtap="onSaveProfile">保存个人偏好</button>
+  </view>
+</view>

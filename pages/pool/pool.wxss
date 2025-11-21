@@ -1,0 +1,48 @@
+.container {
+  padding: 30rpx 20rpx 60rpx;
+}
+.title {
+  font-size: 30rpx;
+  font-weight: 600;
+  margin-bottom: 24rpx;
+}
+.picker {
+  padding: 20rpx 24rpx;
+  border-radius: 999px;
+  background: #f5f5f5;
+  margin-bottom: 20rpx;
+  font-size: 26rpx;
+}
+.input {
+  background: #f9f9f9;
+  border-radius: 999px;
+  padding: 20rpx 32rpx;
+  margin-bottom: 24rpx;
+  font-size: 28rpx;
+}
+.pool-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20rpx 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+.pool-item:last-child {
+  border-bottom-width: 0;
+}
+.left .name {
+  font-size: 28rpx;
+  color: #333333;
+}
+.meta {
+  display: block;
+  margin-top: 4rpx;
+  font-size: 22rpx;
+  color: #999999;
+}
+.empty-tip {
+  font-size: 24rpx;
+  color: #aaaaaa;
+  text-align: center;
+  padding-top: 12rpx;
+}

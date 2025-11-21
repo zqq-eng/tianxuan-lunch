@@ -1,0 +1,30 @@
+<view class="container">
+  <view class="card">
+    <view class="title">新增/编辑条目</view>
+    <picker mode="selector" range="{{categoryOptions}}" range-key="label" bindchange="onCategoryChange">
+      <view class="picker">分类：{{categoryOptions[categoryIndex].label}}</view>
+    </picker>
+    <input class="input" placeholder="名称，如：黄焖鸡米饭" value="{{form.name}}" bindinput="onNameInput" />
+    <input class="input" placeholder="标签，如：高蛋白·减脂友好" value="{{form.tag}}" bindinput="onTagInput" />
+    <input class="input" placeholder="可选：纬度lat（大致即可）" value="{{form.lat}}" bindinput="onLatInput" />
+    <input class="input" placeholder="可选：经度lon" value="{{form.lon}}" bindinput="onLonInput" />
+    <button class="button-primary" bindtap="onSave">保存到抽取池</button>
+  </view>
+
+  <view class="card">
+    <view class="title">当前抽取池</view>
+    <block wx:for="{{pools}}" wx:key="id">
+      <view class="pool-item">
+        <view class="left">
+          <text class="name">{{item.name}}</text>
+          <text class="meta">{{displayCategory(item.category)}} · {{item.tag || '无标签'}}</text>
+        </view>
+        <view class="right">
+          <button size="mini" bindtap="onEdit" data-id="{{item.id}}">编辑</button>
+          <button size="mini" type="warn" bindtap="onDelete" data-id="{{item.id}}">删除</button>
+        </view>
+      </view>
+    </block>
+    <view wx:if="{{!pools.length}}" class="empty-tip">还没有数据，可以先增加几条喜欢的餐厅或食物。</view>
+  </view>
+</view>
