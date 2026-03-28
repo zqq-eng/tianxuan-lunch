@@ -1,26 +1,110 @@
-<view class="container">
-  <view class="card top-card">
-    <view class="user-row">
-      <view class="avatar">{{initial}}</view>
-      <view class="info">
-        <text class="name">{{username || '未登录'}}</text>
-        <text class="sub" wx:if="{{username}}">吃饭也是一种修行~</text>
-        <text class="sub" wx:if="{{!username}}">请先登录以使用完整功能</text>
-      </view>
+<!-- pages/profile/profile.wxml -->
+
+<view class="profile-page">
+  <!-- 🐱 悬浮装饰：小猫 + 云朵 + 爱心粒子（不挡点击） -->
+  <view class="float-decor">
+    <!-- 漂浮小猫 -->
+    <text class="float-cat cat-1">ฅ^•ﻌ•^ฅ</text>
+    
+
+    <!-- 漂浮云朵 -->
+    <view class="float-cloud c1"></view>
+    <view class="float-cloud c2"></view>
+
+    <!-- 爱心粒子 -->
+    <view class="heart-field">
+      <text class="heart-dot h1">❤</text>
+      <text class="heart-dot h2">❤</text>
+      <text class="heart-dot h3">❤</text>
+      <text class="heart-dot h4">❤</text>
+      <text class="heart-dot h5">❤</text>
     </view>
-    <button wx:if="{{!username}}" class="button-primary" bindtap="goLogin">去登录/注册</button>
-    <button wx:if="{{username}}" class="button-primary" bindtap="onLogout">退出登录</button>
   </view>
 
-  <view class="card">
-    <view class="title">身体与目标</view>
-    <picker mode="selector" range="{{goalOptions}}" bindchange="onGoalChange">
-      <view class="picker">当前目标：{{goalOptions[goalIndex]}}</view>
-    </picker>
-    <input class="input" placeholder="当前体重（kg）" value="{{weight}}" bindinput="onWeightInput" />
-    <view class="tag-row">
-      <view class="tag" wx:for="{{likeTags}}" wx:key="*this">{{item}}</view>
+  <!-- 卡片 1：用户信息 / 登录状态 -->
+  <view class="card" style="position: relative; left: 0rpx; top: -29rpx">
+    <view class="user-initial">{{initial}}</view>
+    <view style="text-align:center;margin-bottom:10rpx;">
+      <text style="font-size:30rpx;color:#ff6fa8;font-weight:600;">
+        {{username || '未登录'}}
+      </text>
     </view>
-    <button class="button-primary" bindtap="onSaveProfile">保存个人偏好</button>
+    <view style="text-align:center;color:#c39fb5;font-size:24rpx;">
+      <text wx:if="{{username}}">
+        吃饭也是一种修行～
+      </text>
+      <text wx:else>
+        登录后可以保存你的吃饭偏好和目标哟～
+      </text>
+    </view>
+
+    <!-- 登录 / 退出登录按钮 -->
+    <button wx:if="{{!username}}"
+            class="logout-btn"
+            bindtap="goLogin">
+      去登录
+    </button>
+    <button wx:elif="{{username}}"
+            class="logout-btn"
+            bindtap="onLogout">
+      退出登录
+    </button>
+  </view>
+
+  <!-- 卡片 2：身体与目标设置 -->
+  <view class="card" style="position: relative; left: 0rpx; top: 41rpx">
+    <view class="section-title">身体与目标</view>
+
+    <!-- 当前目标 -->
+    <view style="margin-bottom:22rpx;">
+      <view class="label">当前目标：</view>
+      <picker mode="selector"
+              range="{{goalOptions}}"
+              value="{{goalIndex}}"
+              bindchange="onGoalChange">
+        <view class="picker">
+          {{goalOptions[goalIndex]}}
+        </view>
+      </picker>
+    </view>
+
+    <!-- 当前体重 -->
+    <view style="margin-bottom:22rpx;">
+      <view class="label">当前体重（kg）：</view>
+      <input style="width: 581rpx; height: 77rpx; display: block; box-sizing: border-box" class="input"
+             type="digit"
+             placeholder="例如：50"
+             value="{{weight}}"
+             bindinput="onWeightInput" />
+    </view>
+
+   <!-- 饮食偏好（可自定义增删改） -->
+<view class="field-row field-row-like">
+  <view class="field-label">饮食偏好：</view>
+
+  <view class="tag-list">
+    <!-- 已有标签：点一下编辑，长按删除 -->
+    <block wx:for="{{likeTags}}" wx:key="*this">
+      <view class="tag-pill tag-editable"
+            data-index="{{index}}"
+            bindtap="onEditLikeTag"
+            bindlongpress="onDeleteLikeTag">
+        <text class="tag-text">{{item}}</text>
+      </view>
+    </block>
+
+    <!-- 新增标签按钮 -->
+    <view class="tag-pill tag-add" bindtap="onAddLikeTag">
+      <text class="tag-text">＋ 自定义</text>
+    </view>
+  </view>
+</view>
+
+
+
+    <!-- 保存按钮 -->
+    <button class="save-btn" bindtap="onSaveProfile">
+      保存个人偏好
+    </button>
   </view>
 </view>

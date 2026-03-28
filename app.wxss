@@ -26,3 +26,222 @@ page {
   font-size: 22rpx;
   margin-right: 12rpx;
 }
+/* 全局背景可以保持默认，单页再自己改 */
+
+/* ====== 通用可爱按钮样式 ====== */
+.btn-main {
+  border: none;
+  padding: 18rpx 40rpx;
+  border-radius: 999rpx;
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(135deg, #ff9ac6, #ff7bb8);
+  box-shadow: 0 10rpx 20rpx rgba(255, 122, 178, 0.35);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: 2rpx;
+}
+
+.btn-main:active {
+  transform: scale(0.96);
+  box-shadow: 0 4rpx 10rpx rgba(255, 122, 178, 0.3);
+}
+
+.btn-with-icon {
+  column-gap: 8rpx;
+}
+
+/* 次要按钮：浅色边框 */
+.btn-ghost {
+  padding: 16rpx 36rpx;
+  border-radius: 999rpx;
+  font-size: 26rpx;
+  color: #ff7bb8;
+  background: #fff;
+  border: 2rpx solid #ffb6d9;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-ghost:active {
+  background: #ffe6f3;
+}
+
+/* 爱心按钮：比如“加入抽奖池”“附近找吃的” */
+.btn-heart {
+  padding: 12rpx 28rpx;
+  border-radius: 999rpx;
+  font-size: 24rpx;
+  background: rgba(255, 154, 198, 0.15);
+  color: #ff5d9e;
+  border: 1rpx solid rgba(255, 154, 198, 0.6);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-heart text {
+  margin-left: 4rpx;
+}
+
+.btn-heart:active {
+  background: rgba(255, 154, 198, 0.3);
+}
+
+/* mini 心形按钮 */
+.btn-heart-mini {
+  padding: 8rpx 18rpx;
+  border-radius: 999rpx;
+  font-size: 22rpx;
+}
+
+/* 底部大按钮 */
+.btn-main-large {
+  width: 70%;
+  padding: 20rpx 0;
+  border-radius: 999rpx;
+  font-size: 30rpx;
+}
+
+/* 柔和的危险按钮（删除） */
+.btn-warn-soft {
+  padding: 10rpx 24rpx;
+  border-radius: 999rpx;
+  font-size: 24rpx;
+  background: rgba(255, 94, 94, 0.1);
+  color: #ff4b4b;
+  border: 1rpx solid rgba(255, 94, 94, 0.5);
+}
+
+.btn-warn-soft:active {
+  background: rgba(255, 94, 94, 0.18);
+}
+
+/* 分类 pill 标签（首页“餐厅/主食/小吃/饮料”） */
+.pill-tab {
+  padding: 10rpx 26rpx;
+  border-radius: 999rpx;
+  font-size: 24rpx;
+  background: #ffe6f3;
+  color: #ff7bb8;
+  margin-right: 12rpx;
+}
+
+.pill-tab-active {
+  background: linear-gradient(135deg, #ff9ac6, #ff7bb8);
+  color: #fff;
+  box-shadow: 0 8rpx 16rpx rgba(255, 122, 178, 0.35);
+}
+/* ========= 升级版：花纹卡片（流动渐变 + 呼吸边框） ========= */
+.card-fancy {
+  position: relative;
+  overflow: hidden;
+  border-radius: 26rpx;
+  padding: 0; /* 具体内边距由各页面自己的 card 决定 */
+
+  /* 基础背景 + 玻璃效果 */
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(10rpx);
+
+  /* 用一个伪元素当“流动渐变边框” */
+}
+
+.card-fancy::before {
+  content: "";
+  position: absolute;
+  inset: -4rpx;              /* 比卡片略大一点 */
+  border-radius: inherit;
+  background: conic-gradient(
+    from 180deg,
+    #ff9ac6,
+    #ffe29f,
+    #b5fffc,
+    #ff9ac6
+  );
+  z-index: -2;
+  animation: borderRotate 6s linear infinite;
+}
+
+/* 真正的卡片内容白底，盖在中间，露出一圈彩色边框 */
+.card-fancy::after {
+  content: "";
+  position: absolute;
+  inset: 3rpx;
+  border-radius: inherit;
+  background:
+    radial-gradient(circle at 10% 0%, rgba(255,255,255,0.9) 0, rgba(255,255,255,0) 55%),
+    radial-gradient(circle at 100% 100%, rgba(255,214,240,0.9) 0, rgba(255,214,240,0) 65%),
+    rgba(255, 255, 255, 0.98);
+  z-index: -1;
+}
+
+/* 卡片内部内容要用这个类包一下，避免文字被伪元素遮住 */
+.card-fancy-inner {
+  position: relative;
+}
+
+/* 边框旋转动画 */
+@keyframes borderRotate {
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* 轻微晃动呼吸（可选） */
+.card-fancy-animate {
+  animation: borderFloat 3.8s ease-in-out infinite;
+}
+
+@keyframes borderFloat {
+  0%   { transform: translateY(0) scale(1); }
+  50%  { transform: translateY(-6rpx) scale(1.01); }
+  100% { transform: translateY(0) scale(1); }
+}
+
+/* ========= 升级版主按钮：高光扫过 + 轻微弹跳 ========= */
+.btn-main-pattern {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-main-pattern::before {
+  content: "";
+  position: absolute;
+  inset: -40%;
+  background: linear-gradient(
+    120deg,
+    rgba(255,255,255,0),
+    rgba(255,255,255,0.9),
+    rgba(255,255,255,0)
+  );
+  transform: translateX(-120%) skewX(-15deg);
+  opacity: 0;
+  pointer-events: none;
+  animation: btnShine 3s infinite;
+}
+
+@keyframes btnShine {
+  0% {
+    opacity: 0;
+    transform: translateX(-120%) skewX(-15deg);
+  }
+  40% {
+    opacity: 1;
+    transform: translateX(10%) skewX(-15deg);
+  }
+  60% {
+    opacity: 0;
+    transform: translateX(80%) skewX(-15deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(80%) skewX(-15deg);
+  }
+}
+
+/* 轻微“Q 弹” */
+.btn-main-pattern:active {
+  transform: scale(0.94) translateY(4rpx);
+}

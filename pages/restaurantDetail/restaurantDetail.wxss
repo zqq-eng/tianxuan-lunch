@@ -1,0 +1,69 @@
+page {
+  background: #ffe6f2;
+}
+
+.container {
+  padding: 24rpx;
+}
+
+.r-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  margin-bottom: 8rpx;
+  color: #ff6b6b;
+}
+
+.r-sub {
+  font-size: 26rpx;
+  color: #999;
+  margin-bottom: 20rpx;
+}
+
+.section-title {
+  font-size: 30rpx;
+  font-weight: 600;
+  margin-bottom: 16rpx;
+}
+
+.empty {
+  margin: 60rpx 0;
+  text-align: center;
+  font-size: 26rpx;
+  color: #999;
+}
+
+.dish-item {
+  background: #fff;
+  border-radius: 20rpx;
+  padding: 20rpx 24rpx;
+  margin-bottom: 20rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 8rpx 20rpx rgba(0,0,0,0.04);
+  border: 1rpx solid #ffe0ef;
+}
+
+.dish-main {
+  flex: 1;
+}
+
+.dish-name {
+  font-size: 30rpx;
+  font-weight: 600;
+  margin-bottom: 6rpx;
+}
+
+.dish-tag {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.dish-actions button {
+  margin-left: 8rpx;
+}
+
+.add-btn {
+  margin-top: 40rpx;
+  width: 100%;
+}

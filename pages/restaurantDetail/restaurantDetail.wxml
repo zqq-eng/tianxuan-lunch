@@ -1,0 +1,41 @@
+<view class="container">
+  <view class="r-title">{{restaurant.name}}</view>
+  <view class="r-sub">地址：{{restaurant.address || '未填写'}}</view>
+
+  <view class="section-title">菜品列表</view>
+
+  <view wx:if="{{!dishes.length}}" class="empty">
+    这个餐厅还没有菜品，快点下面“添加菜品”吧～
+  </view>
+
+  <view wx:for="{{dishes}}" wx:key="id" class="dish-item">
+    <view class="dish-main">
+      <view class="dish-name">{{item.name}}</view>
+      <view class="dish-tag">{{item.typeText}}</view>
+    </view>
+    <view class="dish-actions">
+      <button size="mini"
+              class="btn-ghost btn-heart-mini"
+              bindtap="onEdit"
+              data-id="{{item.id}}">
+        ✏️ <text>改</text>
+      </button>
+      <button size="mini"
+              class="btn-warn-soft btn-heart-mini"
+              bindtap="onDelete"
+              data-id="{{item.id}}">
+        🗑 删除
+      </button>
+      <button size="mini"
+              class="btn-heart btn-heart-mini"
+              bindtap="onTogglePool"
+              data-id="{{item.id}}">
+        {{item.inPool ? '💗 已在抽奖池' : '❤️ 加入抽奖池'}}
+      </button>
+    </view>
+  </view>
+
+  <button class="btn-main btn-with-icon add-btn" bindtap="onAddDish">
+    ➕ <text>添加菜品</text>
+  </button>
+</view>

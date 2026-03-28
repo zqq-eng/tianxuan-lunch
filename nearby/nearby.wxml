@@ -1,0 +1,70 @@
+<view class="container">
+  <view class="top-card">
+    <view class="title">附近找吃的</view>
+    <view class="sub">自动检索 + 手动搜索，一键加到管理池</view>
+
+    <!-- 搜索栏 -->
+    <view class="search-row">
+      <input class="search-input"
+             placeholder="想吃什么？奶茶 / 烧烤 / 自助……"
+             value="{{keyword}}"
+             bindinput="onKeywordInput" />
+      <button class="btn-pill" size="mini" bindtap="onSearch">搜索</button>
+    </view>
+
+    <!-- 自动 / 搜索 切换提示 -->
+    <view class="mode-tip">
+      当前模式：{{mode === 'auto' ? '自动推荐附近餐厅' : '搜索结果'}}
+    </view>
+  </view>
+
+  <!-- 餐厅列表 -->
+  <scroll-view scroll-y="true" class="list">
+    <view wx:if="{{!results.length && !loading}}" class="empty">
+      暂时没有结果，可以换个关键词试试～
+    </view>
+
+    <view wx:for="{{results}}" wx:key="id" class="card">
+      <!-- 左边：勾选框 -->
+      <view class="check-area" bindtap="onToggleSelect" data-id="{{item.id}}">
+        <view class="check-circle {{selectedMap[item.id] ? 'checked' : ''}}">
+          <text wx:if="{{selectedMap[item.id]}}">✓</text>
+        </view>
+      </view>
+
+      <!-- 中间：餐厅信息 -->
+      <view class="card-main" bindtap="onOpenRestaurant" data-id="{{item.id}}">
+        <view class="r-name">{{item.name}}</view>
+        <view class="r-sub">{{item.address}}</view>
+        <view class="r-sub">距离约：{{item.distanceText}}</view>
+      </view>
+
+      <!-- 右边：操作按钮 -->
+      <view class="card-actions">
+        <button class="btn-heart" size="mini"
+                bindtap="onAddSingle" data-id="{{item.id}}">
+          ❤️ 加入管理池
+        </button>
+        <button class="btn-pill" size="mini"
+                bindtap="onOpenRestaurant" data-id="{{item.id}}">
+          🍽 菜品
+        </button>
+      </view>
+    </view>
+  </scroll-view>
+
+  <!-- 底部批量按钮 -->
+  <view class="bottom-bar">
+    <view class="bottom-text">
+      已选择 {{selectedCount}} 家餐厅
+    </view>
+    <button class="btn-heart-large" bindtap="onBatchAdd">
+      ❤️ 批量加入管理池
+    </button>
+  </view>
+
+  <!-- 加载中 -->
+  <view wx:if="{{loading}}" class="loading-mask">
+    <view class="loading-box">正在加载附近餐厅...</view>
+  </view>
+</view>

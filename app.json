@@ -5,13 +5,17 @@
     "pages/index/index",
     "pages/pool/pool",
     "pages/community/community",
-    "pages/profile/profile"
+    "pages/profile/profile",
+    "pages/restaurant/restaurant",
+    "pages/restaurantDetail/restaurantDetail",
+    "pages/foodDetail/foodDetail",
+    "pages/nearby/nearby"
   ],
   "window": {
-    "navigationBarBackgroundColor": "#ffb347",
+    "navigationBarBackgroundColor": "#ff9ac6",
     "navigationBarTextStyle": "white",
     "navigationBarTitleText": "天选之饭",
-    "backgroundColor": "#fff7e6",
+    "backgroundColor": "#ffe6f2",
     "backgroundTextStyle": "light"
   },
   "tabBar": {
@@ -34,13 +38,11 @@
       }
     ]
   },
-
   "permission": {
     "scope.userLocation": {
       "desc": "用于提供你附近的餐厅推荐"
     }
   },
-
   "style": "v2",
   "sitemapLocation": "sitemap.json"
 }

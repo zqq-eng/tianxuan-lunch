@@ -1,0 +1,192 @@
+page {
+  background: #ffe6f2;
+}
+
+.container {
+  padding: 24rpx;
+  padding-bottom: 120rpx; /* 预留底部按钮空间 */
+}
+
+.top-card {
+  background: #ffffff;
+  border-radius: 24rpx;
+  padding: 20rpx;
+  box-shadow: 0 8rpx 20rpx rgba(0, 0, 0, 0.04);
+  margin-bottom: 20rpx;
+}
+
+.title {
+  font-size: 34rpx;
+  font-weight: 700;
+  color: #ff6b6b;
+}
+
+.sub {
+  margin-top: 6rpx;
+  font-size: 24rpx;
+  color: #999;
+}
+
+.search-row {
+  margin-top: 16rpx;
+  display: flex;
+  align-items: center;
+}
+
+.search-input {
+  flex: 1;
+  background: #fff5fb;
+  border-radius: 999rpx;
+  padding: 12rpx 24rpx;
+  font-size: 26rpx;
+  margin-right: 14rpx;
+}
+
+.mode-tip {
+  margin-top: 10rpx;
+  font-size: 22rpx;
+  color: #999;
+}
+
+.list {
+  margin-top: 10rpx;
+  max-height: 900rpx; /* 适当控制高度 */
+}
+
+.empty {
+  margin-top: 80rpx;
+  text-align: center;
+  font-size: 26rpx;
+  color: #999;
+}
+
+/* 列表卡片 */
+
+.card {
+  background: #ffffff;
+  border-radius: 20rpx;
+  padding: 18rpx 16rpx;
+  margin-bottom: 14rpx;
+  box-shadow: 0 6rpx 16rpx rgba(0, 0, 0, 0.03);
+  display: flex;
+  align-items: center;
+}
+
+.check-area {
+  padding-right: 16rpx;
+}
+
+.check-circle {
+  width: 36rpx;
+  height: 36rpx;
+  border-radius: 50%;
+  border: 2rpx solid #ff9ac6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ff9ac6;
+  font-size: 24rpx;
+}
+
+.check-circle.checked {
+  background: #ff9ac6;
+  color: #ffffff;
+}
+
+.card-main {
+  flex: 1;
+}
+
+.r-name {
+  font-size: 30rpx;
+  font-weight: 600;
+  margin-bottom: 4rpx;
+}
+
+.r-sub {
+  font-size: 22rpx;
+  color: #999;
+}
+
+.card-actions {
+  display: flex;
+  flex-direction: column;
+  margin-left: 10rpx;
+}
+
+.card-actions button {
+  margin-top: 6rpx;
+}
+
+/* 爱心/胶囊按钮样式复用 */
+
+.btn-pill,
+.btn-heart,
+.btn-heart-large {
+  border-radius: 999rpx;
+  border: none;
+}
+
+/* 小胶囊按钮 */
+.btn-pill {
+  background: #ffe0f0;
+  color: #ff6b6b;
+  font-size: 22rpx;
+}
+
+/* 小爱心按钮 */
+.btn-heart {
+  background: #ff9ac6;
+  color: #ffffff;
+  font-size: 22rpx;
+}
+
+/* 底部大爱心按钮 */
+.bottom-bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 12rpx 24rpx 24rpx;
+  background: #fff7fb;
+  box-shadow: 0 -4rpx 12rpx rgba(0, 0, 0, 0.04);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.bottom-text {
+  font-size: 24rpx;
+  color: #666;
+}
+
+.btn-heart-large {
+  padding: 16rpx 30rpx;
+  font-size: 26rpx;
+  background: linear-gradient(90deg, #ff9ac6, #ff6b9c);
+  color: #ffffff;
+  box-shadow: 0 8rpx 20rpx rgba(255, 105, 180, 0.25);
+}
+
+/* 加载遮罩 */
+
+.loading-mask {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loading-box {
+  padding: 20rpx 30rpx;
+  border-radius: 16rpx;
+  background: #ffffff;
+  font-size: 26rpx;
+  color: #666;
+  box-shadow: 0 8rpx 16rpx rgba(0, 0, 0, 0.15);
+}

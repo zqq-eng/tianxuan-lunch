@@ -1,0 +1,26 @@
+<view class="container">
+  <view class="title">{{item.name}}</view>
+  <view class="sub">分类：{{categoryText}}</view>
+
+  <view class="block">
+    <view class="label">标签：</view>
+    <view class="text">{{item.tag || '未填写'}}</view>
+  </view>
+
+  <view class="block">
+    <view class="label">热量：</view>
+    <view class="text">
+      {{item.calorie ? (item.calorie + ' kcal / 份') : '未填写'}}
+    </view>
+  </view>
+
+  <view class="block">
+    <view class="label">优点：</view>
+    <view class="text">{{item.advantage || '未填写'}}</view>
+  </view>
+
+  <view class="block">
+    <view class="label">缺点：</view>
+    <view class="text">{{item.disadvantage || '未填写'}}</view>
+  </view>
+</view>

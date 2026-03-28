@@ -1,30 +1,110 @@
 <view class="container">
-  <view class="card">
-    <view class="title">新增/编辑条目</view>
-    <picker mode="selector" range="{{categoryOptions}}" range-key="label" bindchange="onCategoryChange">
-      <view class="picker">分类：{{categoryOptions[categoryIndex].label}}</view>
-    </picker>
-    <input class="input" placeholder="名称，如：黄焖鸡米饭" value="{{form.name}}" bindinput="onNameInput" />
-    <input class="input" placeholder="标签，如：高蛋白·减脂友好" value="{{form.tag}}" bindinput="onTagInput" />
-    <input class="input" placeholder="可选：纬度lat（大致即可）" value="{{form.lat}}" bindinput="onLatInput" />
-    <input class="input" placeholder="可选：经度lon" value="{{form.lon}}" bindinput="onLonInput" />
-    <button class="button-primary" bindtap="onSave">保存到抽取池</button>
+
+<!-- 🐱 漂浮小猫、云朵、心心粒子（最高层，不影响点击） -->
+<view class="floating-all" pointer-events="none">
+ 
+
+  <view class="float-cloud cloud-1"></view>
+  <view class="float-cloud cloud-2"></view>
+
+  <view class="heart-particles">
+    <text class="heart h1">❤</text>
+    <text class="heart h2">❤</text>
+    <text class="heart h3">❤</text>
+    <text class="heart h4">❤</text>
+    <text class="heart h5">❤</text>
+  </view>
+</view>
+
+
+<!-- ================== 顶部：新增 / 编辑 ================== -->
+<view class="card form-card">
+
+  <view class="section-title">新增 / 编辑条目</view>
+
+  <!-- 分类切换 -->
+  <view class="row">
+    <view class="label">分类：</view>
+    <view class="pill-group">
+      <view class="pill {{form.category==='restaurant'?'on':''}}" data-cat="restaurant" bindtap="onSelectCategory">餐厅</view>
+      <view class="pill {{form.category==='main'?'on':''}}" data-cat="main" bindtap="onSelectCategory">主食</view>
+      <view class="pill {{form.category==='snack'?'on':''}}" data-cat="snack" bindtap="onSelectCategory">小吃</view>
+      <view class="pill {{form.category==='drink'?'on':''}}" data-cat="drink" bindtap="onSelectCategory">饮料</view>
+    </view>
   </view>
 
-  <view class="card">
-    <view class="title">当前抽取池</view>
-    <block wx:for="{{pools}}" wx:key="id">
-      <view class="pool-item">
-        <view class="left">
-          <text class="name">{{item.name}}</text>
-          <text class="meta">{{displayCategory(item.category)}} · {{item.tag || '无标签'}}</text>
-        </view>
-        <view class="right">
-          <button size="mini" bindtap="onEdit" data-id="{{item.id}}">编辑</button>
-          <button size="mini" type="warn" bindtap="onDelete" data-id="{{item.id}}">删除</button>
-        </view>
-      </view>
-    </block>
-    <view wx:if="{{!pools.length}}" class="empty-tip">还没有数据，可以先增加几条喜欢的餐厅或食物。</view>
+  <!-- 名称 -->
+  <view class="input-wrapper row-name">
+    <view class="label">名称：</view>
+    <input class="input" placeholder="如：黄焖鸡米饭" value="{{form.name}}" bindinput="onInputName"/>
   </view>
+
+  <!-- 标签 -->
+  <view class="input-wrapper row-tag">
+    <view class="label">标签：</view>
+    <input class="input" placeholder="如：高蛋白·减脂友好" value="{{form.tag}}" bindinput="onInputTag"/>
+  </view>
+
+  <!-- 非餐厅多出的字段 -->
+  <view wx:if="{{form.category!=='restaurant'}}">
+
+    <view class="input-wrapper row-calorie">
+      <view class="label">热量：</view>
+      <input class="input" placeholder="每份热量(kcal)" type="digit" value="{{form.calorie}}" bindinput="onInputCalorie"/>
+    </view>
+
+    <view class="input-wrapper row-advantage">
+      <view class="label">优点：</view>
+      <input class="input" placeholder="如：高蛋白、低脂" value="{{form.advantage}}" bindinput="onInputAdvantage"/>
+    </view>
+
+    <view class="input-wrapper row-disadvantage">
+      <view class="label">缺点：</view>
+      <input class="input" placeholder="如：含糖略高" value="{{form.disadvantage}}" bindinput="onInputDisadvantage"/>
+    </view>
+
+  </view>
+
+  <!-- 地址 -->
+  <view class="input-wrapper row-address">
+    <view class="label">可选地址：</view>
+    <input class="input" placeholder="如：教学楼旁边" value="{{form.address}}" bindinput="onInputAddress"/>
+  </view>
+
+  <button class="btn-primary save-btn" bindtap="onSubmit">
+    {{editingId?'保存修改':'保存到抽取池'}}
+  </button>
+
+</view>
+
+
+
+<!-- ================== 当前抽取池 ================== -->
+<view class="card list-card">
+
+  <view class="section-title">当前抽取池</view>
+
+  <view wx:if="{{!pools.length}}" class="empty-tip">
+    还没有添加内容哦~
+  </view>
+
+  <view wx:for="{{pools}}" wx:key="id" class="pool-item">
+
+    <view class="pool-left">
+      <view class="pool-name">{{item.name}}</view>
+      <view class="pool-tag">· {{item.tag || '无标签'}}</view>
+      <view class="pool-meta">分类：{{item.categoryText}}</view>
+    </view>
+
+    <view class="pool-actions">
+      <button class="btn-edit cat-tap" data-id="{{item.id}}" bindtap="onEdit">编辑</button>
+      <button class="btn-delete cat-tap" data-id="{{item.id}}" bindtap="onDelete">删除</button>
+    </view>
+
+    <!-- 每行随机爱心飘动 -->
+    <text class="row-heart">❤</text>
+  </view>
+
+</view>
+
 </view>

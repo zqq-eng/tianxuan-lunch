@@ -1,0 +1,22 @@
+<view class="container">
+  <view class="title">餐厅管理</view>
+
+  <button class="add-btn" bindtap="onAddRestaurant">新增餐厅</button>
+
+  <view wx:if="{{!restaurants.length}}" class="empty">
+    还没有餐厅，先点右下角新增一个吧～
+  </view>
+
+  <view wx:for="{{restaurants}}" wx:key="id" class="card">
+    <view class="card-main">
+      <view class="r-name">{{item.name}}</view>
+      <view class="r-sub">菜品数：{{item.dishes.length || 0}}</view>
+      <view class="r-sub">地址：{{item.address || '未填写'}}</view>
+    </view>
+
+    <view class="card-actions">
+      <button size="mini" bindtap="goDetail" data-id="{{item.id}}">查看菜品</button>
+      <button size="mini" bindtap="addAllToPool" data-id="{{item.id}}">整家加入抽奖池</button>
+    </view>
+  </view>
+</view>
